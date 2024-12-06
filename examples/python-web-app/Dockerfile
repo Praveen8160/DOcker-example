@@ -1,18 +1,13 @@
-FROM ubuntu
+FROM python:3.9-slim
 
 WORKDIR /app
 
 COPY requirements.txt /app
 COPY devops /app
 
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    pip install -r requirements.txt && \
-    cd devops
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
-ENTRYPOINT ["python3"]
+ENTRYPOINT ["python"]
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
-
-
-
 
