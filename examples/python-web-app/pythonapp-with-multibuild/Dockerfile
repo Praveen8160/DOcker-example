@@ -20,7 +20,7 @@ FROM gcr.io/distroless/python3
 WORKDIR /app
 
 # Copy the application and its dependencies from the build stage
-COPY --from=build /app/devops /app/devops
+COPY --from=build /app /app
 COPY --from=build /app/dependencies /app/dependencies
 
 # Set the Python path to include the dependencies
