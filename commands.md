@@ -25,7 +25,11 @@ use `docker run --help` to look into more arguments.
 
 Lists running containers on the host machine.
 
-### docker stop
+### docker ps -a
+
+Lists all containers on the host machine.
+
+### docker stop <container_id>
 
 Stops running container.
 
@@ -33,7 +37,7 @@ Stops running container.
 
 Starts a stopped container.
 
-### docker rm
+### docker rm <container_id>
 
 Removes a stopped container.
 
@@ -56,3 +60,12 @@ Run a command in a running container.
 ### docker network
 
 Manage Docker networks such as creating and removing networks, and connecting containers to networks.
+
+### docker system df
+
+images, containers, or volumes are consuming space
+
+### docker logs <container_id>
+
+View Logs of a Container
+
