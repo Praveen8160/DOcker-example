@@ -89,3 +89,25 @@ This mode enables communication between containers across multiple Docker host m
 
 This mode allows a container to appear on the network as a physical host rather than as a container.
 
+Example:
+1. Create a Custom Docker Network
+    docker network create my-app-network
+2. Run the MySQL Database Container
+   docker run -d \
+    --name mysql-container \
+    --network=my-app-network \
+    -e MYSQL_ROOT_PASSWORD=rootpassword \
+    -e MYSQL_DATABASE=mydatabase \
+    mysql:latest
+3. Run the Web Server (NGINX) Container
+    docker run -d \
+    --name nginx-container \
+    --network=my-app-network \
+    nginx:latest
+4. Communication Between Containers
+    1. Enter the NGINX container shell:
+       docker exec -it nginx-container /bin/bash
+    2. Install a MySQL client inside the NGINX container:
+       apt update && apt install mariadb-client -y:
+    3. Connect to the MySQL container using its name:
+       mysql -h mysql-container -u root -prootpassword
